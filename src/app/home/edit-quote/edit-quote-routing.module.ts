@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: EditQuotePage
+  },
+  {
+    path: ':placeId',
+    component: EditQuotePage
   }
 ];
 

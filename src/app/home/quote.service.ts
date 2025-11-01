@@ -52,7 +52,30 @@ export class QuoteService {
       'Donna Brazile',
       'I was motivated to be different in part because I was different.'
     )
-  ]
-
+  ];
+  get quotes() {
+    return [...this._quotes];
+  }
+  getQuote(id: string) {
+    return {...this._quotes.find(p => p.id === id)};
+  }
+  addQuote(title: string, text: string) {
+    const newQuote =  new Quotes(
+      Math.random().toString(),
+      title,
+      text
+    );
+    this._quotes.push(newQuote);
+  }
+  updateQuote(quoteId: string, person: string, text: string) {
+    const updatedQuoteIndex = this._quotes.findIndex(p1 => p1.id === quoteId);
+    const oldQuote = this._quotes[updatedQuoteIndex];
+    this._quotes[updatedQuoteIndex] = new Quotes(
+      oldQuote.id,
+      person,
+      text
+    );
+  }
+    
   constructor() { }
 }
